@@ -23,13 +23,10 @@ public class LeverPuzzle : MonoBehaviour
     public TMP_Text riddleText;
     [TextArea(6, 15)]
     public string riddle =
-        "<b>Oyez, voyageur égaré !</b>\n" +
-        "Trois gardiens de bois veillent sur cette porte.\n\n" +
-        "Mon premier, vassal fidèle, s'agenouille devant son roi.\n" +
-        "Mon second, fier chevalier, jamais ne courbe l'échine.\n" +
-        "Mon troisième, humble serf, imite en tout mon premier.\n\n" +
-        "<i>Rends à chacun sa juste posture,\n" +
-        "et le passage te sera ouvert.</i>";
+        "<b>Trois gardiens, une porte.</b>\n\n" +
+        "Le premier s'incline.\n" +
+        "Le deuxième reste debout.\n" +
+        "Le troisième s'incline aussi.";
 
     [Header("Réinitialisation")]
     [Tooltip("Délai avant que les leviers remontent après une erreur")]
