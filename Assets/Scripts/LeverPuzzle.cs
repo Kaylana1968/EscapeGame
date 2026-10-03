@@ -1,25 +1,42 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.Content.Interaction;
 
 /// <summary>
-/// Énigme à leviers : certains leviers doivent être activés dans un ordre précis,
-/// les autres doivent rester au repos. Une erreur remet tous les leviers à zéro.
+/// Énigme à leviers en combinaison : chaque levier doit finir dans la bonne position
+/// (haut ou bas), peu importe l'ordre. Si on abaisse autant de leviers que la solution
+/// en demande mais que la combinaison est fausse, tous les leviers remontent.
 /// </summary>
 public class LeverPuzzle : MonoBehaviour
 {
-    [Header("Leviers (dans l'ordre de la scène : 0, 1, 2)")]
+    [Header("Leviers (de gauche à droite)")]
     public XRLever[] levers;
 
     [Header("Solution")]
-    [Tooltip("Indices des leviers à activer, dans l'ordre. Ex : {1, 0} = levier 1 puis levier 0. Les leviers absents doivent rester au repos.")]
-    public int[] solutionOrder = { 1, 0 };
+    [Tooltip("Coché = le levier doit être en BAS. Même ordre que la liste des leviers.")]
+    public bool[] solutionDown = { true, false, true };
+
+    [Header("Énigme")]
+    [Tooltip("Texte 3D (TextMeshPro) où afficher l'énigme, ex : sur un parchemin au mur")]
+    public TMP_Text riddleText;
+    [TextArea(6, 15)]
+    public string riddle =
+        "<b>Oyez, voyageur égaré !</b>\n" +
+        "Trois gardiens de bois veillent sur cette porte.\n\n" +
+        "Mon premier, vassal fidèle, s'agenouille devant son roi.\n" +
+        "Mon second, fier chevalier, jamais ne courbe l'échine.\n" +
+        "Mon troisième, humble serf, imite en tout mon premier.\n\n" +
+        "<i>Rends à chacun sa juste posture,\n" +
+        "et le passage te sera ouvert.</i>";
 
     [Header("Réinitialisation")]
     [Tooltip("Délai avant que les leviers remontent après une erreur")]
     public float resetDelay = 0.6f;
+
+    [Header("Porte")]
+    public DoorUnlock door;
 
     [Header("Sons (optionnel)")]
     public AudioSource audioSource;
@@ -28,41 +45,47 @@ public class LeverPuzzle : MonoBehaviour
     public AudioClip successSound;
 
     [Header("Événements")]
-    public UnityEvent onSolved;   // ex : ouvrir la porte, lancer une animation
+    public UnityEvent onSolved;   // en plus de la porte : lumière, animation...
     public UnityEvent onFailed;   // ex : faire clignoter une lumière rouge
 
-    private readonly List<int> _progress = new List<int>();
     private bool _isResetting;
     private bool _isSolved;
 
     void Start()
     {
-        for (int i = 0; i < levers.Length; i++)
+        if (riddleText != null)
+            riddleText.text = riddle;
+
+        if (solutionDown.Length != levers.Length)
+            Debug.LogError($"[LeverPuzzle] {levers.Length} leviers mais {solutionDown.Length} cases dans la solution.");
+
+        // On écoute les deux sens : remonter un levier compte aussi
+        foreach (var lever in levers)
         {
-            int index = i; // capture pour la lambda
-            levers[i].onLeverActivate.AddListener(() => OnLeverActivated(index));
+            lever.onLeverActivate.AddListener(OnLeverMoved);
+            lever.onLeverDeactivate.AddListener(OnLeverMoved);
         }
     }
 
-    void OnLeverActivated(int index)
+    void OnLeverMoved()
     {
         if (_isResetting || _isSolved) return;
 
         Play(clickSound);
 
-        int step = _progress.Count;
-        bool correct = step < solutionOrder.Length && solutionOrder[step] == index;
-
-        if (!correct)
+        int downCount = 0, expectedDown = 0;
+        bool allCorrect = true;
+        for (int i = 0; i < levers.Length; i++)
         {
-            StartCoroutine(Fail());
-            return;
+            if (levers[i].value) downCount++;
+            if (solutionDown[i]) expectedDown++;
+            if (levers[i].value != solutionDown[i]) allCorrect = false;
         }
 
-        _progress.Add(index);
-
-        if (_progress.Count == solutionOrder.Length)
+        if (allCorrect)
             Solve();
+        else if (downCount >= expectedDown && downCount > 0)
+            StartCoroutine(Fail());
     }
 
     void Solve()
@@ -75,6 +98,7 @@ public class LeverPuzzle : MonoBehaviour
             lever.enabled = false;
 
         Debug.Log("[LeverPuzzle] Énigme résolue !");
+        if (door != null) door.Unlock();
         onSolved.Invoke();
     }
 
@@ -89,7 +113,6 @@ public class LeverPuzzle : MonoBehaviour
         foreach (var lever in levers)
             lever.value = false;
 
-        _progress.Clear();
         _isResetting = false;
     }
 
