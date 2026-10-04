@@ -9059,7 +9059,7 @@ GameObject:
   - component: {fileID: 1114060819}
   - component: {fileID: 1114060822}
   m_Layer: 0
-  m_Name: LightSettings
+  m_Name: Adaptive Probe Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9074,7 +9074,7 @@ Transform:
   m_GameObject: {fileID: 1114060818}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9262762, y: 2.3767602, z: 5.9368625}
+  m_LocalPosition: {x: 1.9262762, y: 2.3767602, z: 5.9368615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9094,8 +9094,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolume
   version: 2
   globalVolume: 0
-  mode: 0
-  size: {x: 19.170551, y: 8.217329, z: 27.126284}
+  mode: 1
+  size: {x: 19.170551, y: 8.217329, z: 27.126282}
   overrideRendererFilters: 0
   minRendererVolumeSize: 0.1
   objectLayerMask:
