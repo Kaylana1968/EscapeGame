@@ -3,6 +3,8 @@ using UnityEngine;
 public class ChestController : MonoBehaviour
 {
     [SerializeField]
+    Collider keyCollider;
+    [SerializeField]
     Vector3 targetRotation;
 
     Quaternion baseQuaternion;
@@ -18,8 +20,11 @@ public class ChestController : MonoBehaviour
     {
         if (value > 0.5f) return;
 
-        value = Mathf.InverseLerp(0f, 0.5f, value);
+        value = Mathf.InverseLerp(0.5f, 0f, value);
 
-        transform.localRotation = Quaternion.Lerp(targetQuaternion, baseQuaternion, value);
+        // Forces player to open chest at least 20% to grab key
+        keyCollider.enabled = value >= 0.2f;
+
+        transform.localRotation = Quaternion.Lerp(baseQuaternion, targetQuaternion, value);
     }
 }
