@@ -314,7 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2457273537969178841, guid: fbac80f280a03844bbdc56acff09ba24, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10137,7 +10137,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234981612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
@@ -10286,11 +10286,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &1234981619 stripped
-MeshCollider:
-  m_CorrespondingSourceObject: {fileID: 2457273537969178841, guid: fbac80f280a03844bbdc56acff09ba24, type: 3}
-  m_PrefabInstance: {fileID: 53066564}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1240208124
 GameObject:
   m_ObjectHideFlags: 0
@@ -10856,7 +10851,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315168975}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f6bf3d943ac7945842268c9ef1dca6, type: 3}
   m_Name: 
@@ -10949,7 +10944,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 4, y: 0.02, z: 4}
   m_Center: {x: 0, y: 0.01, z: 0}
@@ -12702,7 +12697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3be8abfbf3cc7d4f95d3630aa804ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChestController
-  keyCollider: {fileID: 1234981619}
+  keyInteractable: {fileID: 0}
   targetRotation: {x: -120, y: 0, z: 0}
 --- !u!4 &1499163109 stripped
 Transform:
@@ -13105,7 +13100,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544826797}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f6bf3d943ac7945842268c9ef1dca6, type: 3}
   m_Name: 
@@ -13198,7 +13193,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 8, y: 0.02, z: 2}
   m_Center: {x: 0, y: 0.01, z: 0}
@@ -16922,7 +16917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd25e173d4f13f4d86b35b1d77d6b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorController
-  teleportationAreaCollider: {fileID: 1544826800}
+  teleportationArea: {fileID: 0}
   targetAngle: -90
 --- !u!1001 &1930587151
 PrefabInstance:
@@ -18583,7 +18578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd25e173d4f13f4d86b35b1d77d6b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorController
-  teleportationAreaCollider: {fileID: 1315168978}
+  teleportationArea: {fileID: 0}
   targetAngle: -90
 --- !u!1001 &2125089542
 PrefabInstance:

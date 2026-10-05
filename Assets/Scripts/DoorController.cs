@@ -1,10 +1,11 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 
 public class DoorController : MonoBehaviour
 {
     [SerializeField]
-    Collider teleportationAreaCollider;
+    TeleportationArea teleportationArea;
     [SerializeField]
     float targetAngle;
 
@@ -24,7 +25,7 @@ public class DoorController : MonoBehaviour
         value = Mathf.InverseLerp(0.5f, 1f, value);
 
         // Forces player to open door at least 20% to be able to teleport in room
-        teleportationAreaCollider.enabled = value >= 0.2f;
+        teleportationArea.enabled = value >= 0.2f;
 
         transform.localRotation = Quaternion.Lerp(baseQuaternion, targetQuaternion, value);
     }
@@ -32,6 +33,6 @@ public class DoorController : MonoBehaviour
     public void OpenDoorAutomatic(float duration)
     {
         transform.DOLocalRotate(targetAngle * Vector3.up, duration);
-        teleportationAreaCollider.enabled = true;
+        teleportationArea.enabled = true;
     }
 }

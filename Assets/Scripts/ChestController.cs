@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class ChestController : MonoBehaviour
 {
     [SerializeField]
-    Collider keyCollider;
+    XRGrabInteractable keyInteractable;
     [SerializeField]
     Vector3 targetRotation;
 
@@ -23,7 +24,7 @@ public class ChestController : MonoBehaviour
         value = Mathf.InverseLerp(0.5f, 0f, value);
 
         // Forces player to open chest at least 20% to grab key
-        keyCollider.enabled = value >= 0.2f;
+        keyInteractable.enabled = value >= 0.2f;
 
         transform.localRotation = Quaternion.Lerp(baseQuaternion, targetQuaternion, value);
     }
