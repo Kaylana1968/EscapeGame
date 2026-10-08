@@ -26625,6 +26625,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: HintScroll
       objectReference: {fileID: 0}
+    - target: {fileID: 7505888660485495716, guid: 20d77abdce41a7d48bf53c049065d0ff, type: 3}
+      propertyPath: endPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7505888660485495716, guid: 20d77abdce41a7d48bf53c049065d0ff, type: 3}
+      propertyPath: endPosition.z
+      value: -0.442
+      objectReference: {fileID: 0}
+    - target: {fileID: 7505888660485495716, guid: 20d77abdce41a7d48bf53c049065d0ff, type: 3}
+      propertyPath: endRotation.y
+      value: -80
+      objectReference: {fileID: 0}
     - target: {fileID: 8451010735902222251, guid: 20d77abdce41a7d48bf53c049065d0ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.328
