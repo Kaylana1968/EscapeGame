@@ -5,6 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 public class DoorController : MonoBehaviour
 {
     [SerializeField]
+    AudioSource doorSound;
+    [SerializeField]
     TeleportationArea teleportationArea;
     [SerializeField]
     float targetAngle;
@@ -34,5 +36,6 @@ public class DoorController : MonoBehaviour
     {
         transform.DOLocalRotate(targetAngle * Vector3.up, duration);
         teleportationArea.enabled = true;
+        doorSound.Play();
     }
 }

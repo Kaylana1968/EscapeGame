@@ -403,8 +403,8 @@ MonoBehaviour:
   minPosition: {x: 0.17, y: 0, z: 0.24}
   maxPosition: {x: -0.17, y: 0, z: -0.2}
   endTravelTime: 0.3
-  endPosition: {x: 0.257, y: 0, z: -0.442}
-  endRotation: {x: 0, y: -80, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
+  endRotation: {x: 0, y: 0, z: 0}
 --- !u!65 &7446915584725612738
 BoxCollider:
   m_ObjectHideFlags: 0
