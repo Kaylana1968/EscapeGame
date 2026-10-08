@@ -25,7 +25,7 @@ public class LeverPuzzle : MonoBehaviour
 
         if (CheckSolved())
         {
-            doorController.OpenDoorAutomatic(2f);
+            doorController.OpenDoorAutomatic(3f);
         }
     }
 
@@ -35,7 +35,7 @@ public class LeverPuzzle : MonoBehaviour
 
         if (CheckSolved())
         {
-            doorController.OpenDoorAutomatic(2f);
+            doorController.OpenDoorAutomatic(3f);
         }
     }
 }
