@@ -17,9 +17,9 @@ public class End : MonoBehaviour
     }
 
     // Détection du Trigger
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (!_hasTriggered && other.CompareTag("Player"))
+        if (!_hasTriggered && collider.CompareTag("Player"))
         {
             _hasTriggered = true;
             StartCoroutine(FadeToBlack());

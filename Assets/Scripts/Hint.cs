@@ -24,7 +24,7 @@ public class Hint : MonoBehaviour
         {
             textField.alpha -= 0.02f;
 
-            yield return new WaitForEndOfFrame();
+            yield return null;
 
             timeElapsed += Time.deltaTime;
         }
@@ -39,7 +39,7 @@ public class Hint : MonoBehaviour
         {
             textField.alpha += 0.02f;
 
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
 
         textField.alpha = 1f;
